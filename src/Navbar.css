@@ -48,3 +48,12 @@
   margin-left: -7px;
   margin-top: -3px;
 }
+
+.select-container {
+  margin-left: auto;
+  margin-right: 1rem;
+}
+
+.MuiInput-underline:before {
+  border-bottom: 5px solid green;
+}
