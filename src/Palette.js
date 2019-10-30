@@ -15,7 +15,6 @@ export default class Palette extends Component {
   }
 
   changeLevel(level) {
-    console.log(level);
     this.setState({ level });
   }
 
