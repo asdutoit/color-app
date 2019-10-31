@@ -26,6 +26,7 @@ class SingleColorPalette extends Component {
     return shades.slice(1);
   }
   changeFormat(val) {
+    console.log(val);
     this.setState({ format: val });
   }
   render() {
