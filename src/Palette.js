@@ -1,10 +1,34 @@
 import React, { Component } from "react";
 import ColorBox from "./ColorBox";
 import NavBar from "./Navbar";
-import "./Palette.css";
 import PaletteFooter from "./PaletteFooter";
+import { withStyles } from "@material-ui/styles";
+import "./Palette.css";
 
-export default class Palette extends Component {
+const styles = {
+  Palette: {
+    height: "100vh",
+    display: "flex",
+    flexDirection: "column"
+  },
+  PaletteColors: {
+    height: "90%"
+  },
+  PaletteFooter: {
+    backgroundColor: "white",
+    height: "5vh",
+    display: "flex",
+    justifyContent: "flex-end",
+    alignItems: "center",
+    fontWeight: "bold"
+  },
+  emoji: {
+    fontSize: "1.5rem",
+    margin: "1rem"
+  }
+};
+
+class Palette extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -25,6 +49,7 @@ export default class Palette extends Component {
 
   render() {
     const { colors, paletteName, emoji, id } = this.props.palette;
+    const { classes } = this.props;
     const { level, format } = this.state;
     const colorBoxes = colors[level].map(color => (
       <ColorBox
@@ -33,20 +58,22 @@ export default class Palette extends Component {
         key={color.id}
         id={color.id}
         paletteId={id}
-        showLink
+        showingFullPalette
       />
     ));
     return (
-      <div className="Palette">
+      <div className={classes.Palette}>
         <NavBar
           level={level}
           changeLevel={this.changeLevel}
           handleChange={this.changeFormat}
           showingAllColors
         />
-        <div className="Palette-colors">{colorBoxes}</div>
+        <div className={classes.PaletteColors}>{colorBoxes}</div>
         <PaletteFooter paletteName={paletteName} emoji={emoji} />
       </div>
     );
   }
 }
+
+export default withStyles(styles)(Palette);
