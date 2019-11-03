@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Button from "@material-ui/core/Button";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import { ChromePicker } from "react-color";
-import { createMuiTheme } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 
 const styles = themes => ({
@@ -21,12 +20,12 @@ const styles = themes => ({
     marginTop: "2rem"
   }
 });
-
 const CssTextField = withStyles({
   root: {
     "& label.Mui-focused": {
       color: "teal"
     },
+
     "& .MuiFilledInput-underline:after": {
       borderBottomColor: "teal"
     },
@@ -98,6 +97,7 @@ class ColorPickerForm extends Component {
             variant="filled"
             name="newColorName"
             label="New Color Name"
+            style={{ borderBottomColor: currentColor }}
             onChange={this.handleChange}
             validators={["required", "isColorNameUnique", "isColorUnique"]}
             errorMessages={[
