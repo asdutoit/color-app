@@ -50,6 +50,7 @@ class PaletteMetaForm extends Component {
       emoji: emojiDetails.native
     };
     this.props.handleSubmit(newPalette);
+    this.setState({ stage: "" });
   }
 
   render() {
